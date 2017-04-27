@@ -5,19 +5,19 @@
  * @note THIS MUST NOT BE EMPTY, THIS MUST ALSO BE UNIQUE OR YOU WILL NOT BE ABLE TO CONNECT TO IRC.
  * @note pick a normal name otherwise you will be banned from the pre channel !!!!
  **********************************************************************************************************************/
-$username = 'Rara73';
+$username = 'xxxxx';
 
 /***********************************************************************************************************************
  * The IRC server to connect to.
  * @note If you have issues connecting, head to https://www.synirc.net/servers and try another server.
  **********************************************************************************************************************/
-define('SCRAPE_IRC_SERVER', '0.0.0.0');
+define('SCRAPE_IRC_SERVER', 'xxxx');
 
 /***********************************************************************************************************************
  * This is the port to the IRC server.
  * @note If you want use SSL/TLS, use a corresponding port (6697 or 7001 for example), and set SCRAPE_IRC_TLS to true.
  **********************************************************************************************************************/
-define('SCRAPE_IRC_PORT', '6000');
+define('SCRAPE_IRC_PORT', 'xxxx');
 
 /***********************************************************************************************************************
  * If you want to use SSL/TLS encryption on the IRC server, set this to true.
@@ -46,7 +46,7 @@ define('SCRAPE_IRC_USERNAME', "$username");
  * @note Put your password between quotes: 'mypassword'
  * @note If you are using ZNC and having issues, try 'username:password' or 'username/network:<password>'
  **********************************************************************************************************************/
-define('SCRAPE_IRC_PASSWORD', 'Rarasync/synirc:wham2681');
+define('SCRAPE_IRC_PASSWORD', 'xxxxx');
 
 /***********************************************************************************************************************
  * This is an optional field you can use for ignoring categories.
