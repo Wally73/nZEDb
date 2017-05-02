@@ -375,6 +375,11 @@ class ProcessAdditional
 	protected $_reverse;
 
 	/**
+	 * @var \nzedb\processing\post\CRC
+	*/
+	protected $_crc;
+
+	/**
 	 * @param array $options Class instances / echo to cli.
 	 */
 	public function __construct(array $options = [])
@@ -412,7 +417,9 @@ class ProcessAdditional
 		$this->_par2Info = new \Par2Info();
 		$this->_nfo = ($options['Nfo'] instanceof Nfo ? $options['Nfo'] : new Nfo(['Echo' => $this->_echoCLI, 'Settings' => $this->pdo]));
 		$this->sphinx = ($options['SphinxSearch'] instanceof SphinxSearch ? $options['SphinxSearch'] : new SphinxSearch());
-
+		if (class_exists('nzedb\processing\post\CRC')) {
+			$this->_crc = new CRC(['Settings' => $this->pdo, 'Echo' => $this->_echoCLI, 'NameFixer' => $this->_nameFixer]);
+		}
 		$value = Settings::value('indexer.ppa.innerfileblacklist');
 		$this->_innerFileBlacklist = ($value == '' ? false : $value);
 
@@ -1087,6 +1094,20 @@ class ProcessAdditional
 			$this->_passwordStatus[] = Releases::PASSWD_RAR;
 			return false;
 		}
+
+		if (isset($this->_crc) && $this->_reverse === true) {
+			$fileData = (isset($dataSummary['file_list'][0]) ? $dataSummary['file_list'][0] : '');
+			if(isset($fileData['crc32']) && isset($fileData['size']) && $fileData['size'] > 104857600) {
+				$matchedCRC = $this->_crc->checkCRCInfo(
+					$this->_release,
+					$fileData['crc32'],
+					$fileData['size'],
+					'',
+					$fileData['date']
+				);
+				$this->_release['predb_id'] = ($matchedCRC !== false ? $matchedCRC : 0);
+			}
+ 		}
 
 		switch ($dataSummary['main_type']) {
 			case \ArchiveInfo::TYPE_RAR:
