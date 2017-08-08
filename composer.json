@@ -99,6 +99,7 @@
     "dborsatto/php-giantbomb": "dev-master",
     "fxp/composer-asset-plugin": "~1.3.0",
     "google/recaptcha": "^1.1.2",
+    "guzzlehttp/guzzle": "^6.3",
     "james-heinrich/getid3": "^1.9.12",
     "joshpinkney/tv-maze-php-api": "dev-master",
     "moinax/tvdb": "^1.0.4",
