@@ -103,6 +103,7 @@ define('SCRAPE_IRC_SOURCE_IGNORE',
 			'#a.b.warez'                  => false,
 			'#a.b.games.xbox360'          => false,
 			'#pre@corrupt'                => false,
+			'#pre@opentracker'            => false,
 			'#scnzb'                      => false,
 			'#tvnzb'                      => false,
 			'srrdb'                       => false
